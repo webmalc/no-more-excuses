@@ -3,8 +3,17 @@
 
 package main
 
-import "fmt"
+import (
+	"time"
+	"webmalc/no-more-excuses/common/logger"
+)
 
 func main() {
-	fmt.Println("No-more-excuses: Hello, World!")
+	l := logger.NewLogger()
+	for {
+		l.Info("info text")
+		l.Error("error text")
+		l.Debug("debug text")
+		time.Sleep(time.Second)
+	}
 }

@@ -34,3 +34,4 @@ tmp
 logs/*
 !logs/.gitkeep
 __debug_bin
+no-more-excuses
