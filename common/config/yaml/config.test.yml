@@ -1,2 +1,22 @@
 is_prod: false
 timezone: Europe/Rome
+
+apps:
+  steam:
+    path: /usr/bin/steam
+    weekdays:
+      mon: 08:00-11:00
+      tue: ""
+      wen: 00:00-23:59
+      thu: ""
+      fri: ""
+      sat: ""
+      sun: ""
+    base_schedule: 07:00-18:00
+  game:
+    path: /home/bob/game
+    weekdays:
+      mon: 07:00-10:00
+      tue: 10:00-14:00
+      sat: ""
+    base_schedule: 09:00-15:00

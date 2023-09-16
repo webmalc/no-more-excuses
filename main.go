@@ -5,10 +5,13 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"sync"
 	"time"
 	"webmalc/no-more-excuses/cmd"
+	"webmalc/no-more-excuses/common/config"
 	"webmalc/no-more-excuses/common/logger"
+	"webmalc/no-more-excuses/internal/repositories"
 )
 
 // TODO: REMOVE TEMP CODE
@@ -49,10 +52,19 @@ func (s *TempServer) Run(ctx context.Context) {
 	wg.Wait()
 }
 
+type TestConfig struct {
+	Apps map[string]map[string]string `mapstructure:"apps"`
+}
+
 func main() {
+	config.Setup()
 	log := logger.NewLogger()
+	appRepo := repositories.NewAppRepository(log)
 	router := cmd.NewCommandRouter(
 		log, &TempServer{logger: log}, &TempConfigViewer{logger: log},
 	)
 	router.Run()
+
+	// TODO: REMOVE TEMP CODE
+	fmt.Println(appRepo.GetApps())
 }

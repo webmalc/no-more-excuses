@@ -13,5 +13,5 @@ type ContextRunner struct {
 
 // Run is method mock.
 func (r *ContextRunner) Run(ctx context.Context) {
-	r.Called()
+	r.Called(ctx)
 }

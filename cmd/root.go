@@ -17,12 +17,12 @@ type CommandRouter struct {
 }
 
 // configShow show the configuration.
-func (s *CommandRouter) configShow(cmd *cobra.Command, args []string) {
+func (s *CommandRouter) configShow(_ *cobra.Command, _ []string) {
 	s.configViewer.Run()
 }
 
 // configShow show the configuration.
-func (s *CommandRouter) server(cmd *cobra.Command, args []string) {
+func (s *CommandRouter) server(_ *cobra.Command, _ []string) {
 	s.serverRunner.Run(context.Background())
 }
 
