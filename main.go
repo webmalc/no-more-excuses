@@ -5,24 +5,16 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"sync"
 	"time"
 	"webmalc/no-more-excuses/cmd"
 	"webmalc/no-more-excuses/common/config"
 	"webmalc/no-more-excuses/common/logger"
 	"webmalc/no-more-excuses/internal/repositories"
+	"webmalc/no-more-excuses/internal/ui"
 )
 
-// TODO: REMOVE TEMP CODE
-type TempConfigViewer struct {
-	logger *logger.Logger
-}
-
-func (s *TempConfigViewer) Run() {
-	s.logger.Info("config")
-}
-
+// TODO: REMOVE TEMP CODE.
 type TempServer struct {
 	logger *logger.Logger
 }
@@ -60,11 +52,9 @@ func main() {
 	config.Setup()
 	log := logger.NewLogger()
 	appRepo := repositories.NewAppRepository(log)
+	uiObj := ui.NewUI(appRepo)
 	router := cmd.NewCommandRouter(
-		log, &TempServer{logger: log}, &TempConfigViewer{logger: log},
+		log, &TempServer{logger: log}, uiObj,
 	)
 	router.Run()
-
-	// TODO: REMOVE TEMP CODE
-	fmt.Println(appRepo.GetApps())
 }

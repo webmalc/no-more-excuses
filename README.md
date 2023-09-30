@@ -1,3 +1,2 @@
 # no-more-excuses ![tests](https://github.com/webmalc/no-more-excuses/workflows/tests/badge.svg)  [![Go Report Card](https://goreportcard.com/badge/github.com/webmalc/no-more-excuses)](https://goreportcard.com/report/github.com/webmalc/no-more-excuses) [![codecov](https://codecov.io/gh/webmalc/no-more-excuses/branch/main/graph/badge.svg?token=OXQZZW7SOO)](https://codecov.io/gh/webmalc/no-more-excuses) [![codebeat badge](https://codebeat.co/badges/7101574c-0a32-4543-8aaf-e326902e239d)](https://codebeat.co/projects/github-com-webmalc-no-more-excuses-master)
-
 No-More-Excuses is a small application that blocks distracting programs on a schedule. This will help you stay focused and avoid procrastination.

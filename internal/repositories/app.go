@@ -3,7 +3,7 @@ package repositories
 import (
 	"time"
 	"webmalc/no-more-excuses/internal/dto"
-	"webmalc/no-more-excuses/internal/utils"
+	"webmalc/no-more-excuses/internal/serializers"
 )
 
 // The app repository.
@@ -16,9 +16,8 @@ type AppRepository struct {
 func (s *AppRepository) GetApps() map[string]dto.App {
 	apps := make(map[string]dto.App)
 	for name, data := range s.config.Apps {
-		startBase, endBase, err := utils.GetDurationsFromStrRange(
-			data.BaseSchedule,
-		)
+		serializer := serializers.NewDurationRange(0, 0, data.BaseSchedule)
+		startBase, endBase, err := serializer.Deserialize()
 		if err != nil {
 			s.logger.Errorf(
 				"invalid time range: %s. Error: %s", data.BaseSchedule, err,
@@ -49,7 +48,8 @@ func (s *AppRepository) newApp(name, path string) dto.App {
 func (s *AppRepository) getAppTime(
 	schedule string, startBase, endBase time.Duration,
 ) (time.Duration, time.Duration) {
-	start, end, err := utils.GetDurationsFromStrRange(schedule)
+	serializer := serializers.NewDurationRange(0, 0, schedule)
+	start, end, err := serializer.Deserialize()
 	if err != nil {
 		start, end = startBase, endBase
 	}
@@ -60,7 +60,8 @@ func (s *AppRepository) getAppTime(
 func (s *AppRepository) addIntervalToApp(
 	app *dto.App, weekdayStr string, start, end time.Duration,
 ) {
-	weekday, err := utils.GetWeekdayFromStr(weekdayStr)
+	serializer := serializers.NewWeekday(weekdayStr)
+	weekday, err := serializer.Deserialize()
 	if err != nil {
 		s.logger.Errorf(
 			"invalid weekdays: %s. Error: %s", weekday, err,

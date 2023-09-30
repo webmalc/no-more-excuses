@@ -13,12 +13,12 @@ type CommandRouter struct {
 	rootCmd      *cobra.Command
 	config       *Config
 	serverRunner ContextRunner
-	configViewer Runner
+	configViewer ConfigViewer
 }
 
 // configShow show the configuration.
 func (s *CommandRouter) configShow(_ *cobra.Command, _ []string) {
-	s.configViewer.Run()
+	s.configViewer.ShowConfig()
 }
 
 // configShow show the configuration.
@@ -50,7 +50,7 @@ func (s *CommandRouter) Run() {
 func NewCommandRouter(
 	log ErrorLogger,
 	serverRunner ContextRunner,
-	configViewer Runner,
+	configViewer ConfigViewer,
 ) CommandRouter {
 	config := NewConfig()
 
