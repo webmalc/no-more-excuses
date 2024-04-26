@@ -28,6 +28,8 @@ func setDefaults(baseDir string) {
 	viper.Set("base_dir", filepath.Dir(filepath.Dir(baseDir))+"/")
 	viper.SetDefault("is_prod", false)
 	viper.SetDefault("timezone", "UTC")
+	secondsInHour := 60
+	viper.SetDefault("run_per_seconds", secondsInHour)
 }
 
 // setPaths set paths.

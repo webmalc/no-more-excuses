@@ -1,5 +1,6 @@
 is_prod: false
 timezone: Europe/Rome
+run_per_seconds: 2
 
 apps:
   steam:

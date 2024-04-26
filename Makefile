@@ -39,7 +39,6 @@ clean:
 
 lint:
 	golangci-lint run ./...
-	golint ./...
 
 run:
 	$(GORUN) $(c)
