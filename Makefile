@@ -33,6 +33,8 @@ testl: testv lint
 
 testall: test lint threshold
 
+testallv: testv lint threshold
+
 clean:
 	$(GOCLEAN)
 	rm -f $(BINARY_NAME)
